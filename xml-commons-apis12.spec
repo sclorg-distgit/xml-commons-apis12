@@ -36,7 +36,7 @@
 Name:           %{?scl_prefix}xml-commons-apis12
 Epoch:          0
 Version:        1.2.04
-Release:        10.9%{?dist}
+Release:        10.10%{?dist}
 Summary:        JAXP 1.2, DOM 2, SAX 2.0.1, SAX2-ext 1.0 apis
 Group:          System Environment/Libraries
 URL:            http://xml.apache.org/commons/
@@ -48,7 +48,7 @@ Source0:        xml-commons-external-1.2.04.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 Requires:       %{?scl_prefix_java_common}jpackage-utils >= 0:1.6
-Requires:       maven30-runtime
+Requires:       %{?scl_prefix}runtime
 
 BuildRequires:  %{?scl_prefix_java_common}ant
 BuildRequires:  %{?scl_prefix_java_common}jpackage-utils >= 0:1.6
@@ -70,7 +70,7 @@ Summary:        Javadoc for %{pkg_name}
 %package manual
 Group:          Documentation
 Summary:        Documents for %{pkg_name}
-Requires:       maven30-runtime
+Requires:       %{?scl_prefix}runtime
 
 %description manual
 %{summary}.
@@ -79,13 +79,13 @@ Requires:       maven30-runtime
 %setup -q -c
 
 %build
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 ant -f xml-commons-external-1_2_04/java/external/build.xml jar javadoc
 %{?scl:EOF}
 
 %install
-%{?scl:scl enable maven30 %{scl} - <<"EOF"}
+%{?scl:scl enable %{scl} - <<"EOF"}
 set -e -x
 rm -rf $RPM_BUILD_ROOT
 
@@ -150,6 +150,9 @@ rm -rf $RPM_BUILD_ROOT
 # -----------------------------------------------------------------------------
 
 %changelog
+* Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 0:1.2.04-10.10
+- maven33 rebuild #2
+
 * Sat Jan 09 2016 Michal Srb <msrb@redhat.com> - 0:1.2.04-10.9
 - maven33 rebuild
 
