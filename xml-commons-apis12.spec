@@ -36,7 +36,7 @@
 Name:           %{?scl_prefix}xml-commons-apis12
 Epoch:          0
 Version:        1.2.04
-Release:        10.10%{?dist}
+Release:        10.11%{?dist}
 Summary:        JAXP 1.2, DOM 2, SAX 2.0.1, SAX2-ext 1.0 apis
 Group:          System Environment/Libraries
 URL:            http://xml.apache.org/commons/
@@ -150,6 +150,9 @@ rm -rf $RPM_BUILD_ROOT
 # -----------------------------------------------------------------------------
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 0:1.2.04-10.11
+- Fix BR on maven-local & co.
+
 * Mon Jan 11 2016 Michal Srb <msrb@redhat.com> - 0:1.2.04-10.10
 - maven33 rebuild #2
 
